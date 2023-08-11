@@ -1,25 +1,21 @@
 package edu.icet.web.controller;
 
 import edu.icet.web.dto.Student;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+
 @RestController
+@CrossOrigin
 public class StudentController {
-
-    @GetMapping("/get-student")
-    public Student getStudent(){
-        Student student = new Student();
-        student.setFirstName("Rashen");
-        student.setLastName("Fernando");
-        return student;
-    }
-
-    @GetMapping("/get-student-two")
-    public Student getStudent1(){
-        Student student = new Student();
-        student.setFirstName("Chamika");
-        student.setLastName("Fernando");
-        return student;
+    @GetMapping("/student")
+    public ArrayList<Student> getStudent(){
+        ArrayList<Student> list = new ArrayList<>();
+        list.add(new Student("Rashen","Fernando"));
+        list.add(new Student("Shan","Basnayake"));
+        list.add(new Student("Niroth","Samarawikrama"));
+        return list;
     }
 }
