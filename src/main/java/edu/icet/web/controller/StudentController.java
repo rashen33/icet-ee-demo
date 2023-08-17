@@ -1,21 +1,23 @@
 package edu.icet.web.controller;
 
 import edu.icet.web.dto.Student;
+import edu.icet.web.service.StudentService;
+import edu.icet.web.service.StudentServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 
-@RestController
+@RestController //Routing
 @CrossOrigin
 public class StudentController {
+    @Autowired
+    StudentService studentService;
     @GetMapping("/student")
     public ArrayList<Student> getStudent(){
-        ArrayList<Student> list = new ArrayList<>();
-        list.add(new Student("Rashen","Fernando"));
-        list.add(new Student("Shan","Basnayake"));
-        list.add(new Student("Niroth","Samarawikrama"));
-        return list;
+        return studentService.getStudent();
     }
+
 }
